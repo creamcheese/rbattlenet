@@ -5,8 +5,7 @@ module RBattlenet
         fields = RBattlenet.parse_fields(fields)
         queries = RBattlenet.merge_queries(fields)
 
-        uri = RBattlenet.
-          base_uri("#{GAME}/character/#{realm}/#{name}")
+        uri = RBattlenet.base_uri("#{GAME}/character/#{realm}/#{name}")
 
         RBattlenet.get(uri, queries)
       end

@@ -14,3 +14,4 @@ module RBattlenet
   end
 end
 
+#https://eu.api.blizzard.com/wow/character/blackrock/Thrall?locale=en_GB&access_token=blahxblahy

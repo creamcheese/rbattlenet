@@ -37,7 +37,7 @@ module RBattlenet
   def self.authenticate(api_key:)
     @@api_key = api_key
 
-    @@queries = "?locale=#{@@locale}&apikey=#{@@api_key}"
+    @@queries = "?locale=#{@@locale}&access_token=#{@@api_key}"
     return true
   end
 
@@ -45,7 +45,7 @@ module RBattlenet
   #This defaults to the US region and en_US locale
   def self.set_region(region:, locale:)
     @@region, @@locale = region, locale
-    @@queries = "?locale=#{@@locale}&apikey=#{@@api_key}"
+    @@queries = "?locale=#{@@locale}&access_token=#{@@api_key}"
     return true
   end
 
@@ -69,7 +69,15 @@ module RBattlenet
     
     #Sets base uri for requests
     def base_uri(path)
-      "https://#{@@region}.api.battle.net/#{path}"
+      "https://#{@@region}.api.battle.com/#{path}"
+    end
+
+    #Sets URI for alternative endpoints
+
+    def old_uri(path)
+      #GET /oauth/userinfo
+      #GET /wow/user/characters
+      "https://#{@@region}.battle.net/#{path}"
     end
 
     #Merges required and optional query parameters
